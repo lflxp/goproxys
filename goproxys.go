@@ -6,6 +6,8 @@ import (
 	"github.com/lflxp/goproxys/protocol"
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/alecthomas/kingpin.v2"
+	"github.com/eahydra/socks/cmd/socksd"
+	"github.com/eahydra/socks"
 )
 
 var (
@@ -22,6 +24,11 @@ var (
 	Socket5 = kingpin.Flag(
 		"socket5",
 		"socket5 proxy代理，无验证",
+	).Bool()
+
+	Socket5Cipher = kingpin.Flag(
+		"sc",
+		"socket5 cipher加密代理",
 	).Bool()
 )
 
@@ -62,6 +69,19 @@ func main() {
 			go protocol.HandleSocket5RequestTCP(client)
 		} else {
 			go protocol.HandleSocket5RequestTCP(client)
+		} else if *Socket5Cipher {
+			cipherDecorator := socksd.NewCipherConnDecorator(conf.Crypto, conf.Password)
+			listener = socksd.NewDecorateListener(listener, cipherDecorator)
+			socks5Svr, err := socks.NewSocks5Server(forward)
+			if err != nil {
+				listener.Close()
+				ErrLog.Println("socks.NewSocks5Server failed, err:", err)
+				return
+			}
+			go func() {
+				defer listener.Close()
+				socks5Svr.Serve(listener)
+			}()
 		}
 	}
 }
