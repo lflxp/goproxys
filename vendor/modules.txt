@@ -1,0 +1,27 @@
+# github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da
+github.com/aead/chacha20
+github.com/aead/chacha20/chacha
+# github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc
+github.com/alecthomas/template
+github.com/alecthomas/template/parse
+# github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf
+github.com/alecthomas/units
+# github.com/codahale/chacha20 v0.0.0-20151107025005-ec07b4f69a3f
+github.com/codahale/chacha20
+# github.com/eahydra/socks v0.0.0-20170129144339-a8dfee540d9f
+github.com/eahydra/socks
+# github.com/konsorten/go-windows-terminal-sequences v1.0.1
+github.com/konsorten/go-windows-terminal-sequences
+# github.com/shadowsocks/shadowsocks-go v0.0.0-20190614083952-6a03846ca9c0
+github.com/shadowsocks/shadowsocks-go/shadowsocks
+# github.com/sirupsen/logrus v0.0.0-20190403091019-9b3cdde74fbe
+github.com/sirupsen/logrus
+# golang.org/x/crypto v0.0.0-20190513172903-22d7a77e9e5f
+golang.org/x/crypto/blowfish
+golang.org/x/crypto/cast5
+golang.org/x/crypto/salsa20/salsa
+# golang.org/x/sys v0.0.0-20190620070143-6f217b454f45
+golang.org/x/sys/unix
+golang.org/x/sys/cpu
+# gopkg.in/alecthomas/kingpin.v2 v2.2.6
+gopkg.in/alecthomas/kingpin.v2
