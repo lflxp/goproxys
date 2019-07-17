@@ -46,6 +46,7 @@ func HandleHttpRequestTCP(client net.Conn) {
 	}
 	log.Debugf("结果: %s %s %s\n", address, method, host)
 	//获得了请求的host和port，就开始拨号吧
+	// https://allenwind.github.io/2018/03/01/%E8%AE%A9Go%E7%9A%84HTTP%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%B5%B0socks5%E4%BB%A3%E7%90%86/
 	server, err := net.Dial("tcp", address)
 	if err != nil {
 		log.Error(err)
