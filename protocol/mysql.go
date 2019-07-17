@@ -37,15 +37,6 @@ func HandleMysqlRequestTCP(client net.Conn) {
 	}
 	defer client.Close()
 
-	// var b [1024]byte
-	// n, err := client.Read(b[:])
-	// if err != nil {
-	// 	log.Error(err)
-	// 	return
-	// }
-
-	// log.Debugf("Byte Origin: %v", b[:], n)
-
 	server, err := net.Dial("tcp", net.JoinHostPort("10.128.142.132", "3306"))
 	if err != nil {
 		log.Error(err)

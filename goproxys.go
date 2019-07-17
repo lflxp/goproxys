@@ -21,7 +21,7 @@ var (
 	).Bool()
 
 	Mysql = kingpin.Flag(
-		"Mysql",
+		"mysql",
 		"mysql proxy代理，无加密,负载均衡",
 	).Bool()
 
