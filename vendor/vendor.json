@@ -3,6 +3,18 @@
 	"ignore": "test",
 	"package": [
 		{
+			"checksumSHA1": "CRskBANKJfxFhfOCiYbR0aRhw18=",
+			"path": "github.com/aead/chacha20",
+			"revision": "8b13a72661dae6e9e5dea04f344f0dc95ea29547",
+			"revisionTime": "2018-07-09T15:02:44Z"
+		},
+		{
+			"checksumSHA1": "Gt6sSvgsyLpPViRg84DQrpkIn6s=",
+			"path": "github.com/aead/chacha20/chacha",
+			"revision": "8b13a72661dae6e9e5dea04f344f0dc95ea29547",
+			"revisionTime": "2018-07-09T15:02:44Z"
+		},
+		{
 			"checksumSHA1": "KmjnydoAbofMieIWm+it5OWERaM=",
 			"path": "github.com/alecthomas/template",
 			"revision": "a0175ee3bccc567396460bf5acd36800cb10c49c",
@@ -27,10 +39,40 @@
 			"revisionTime": "2015-11-07T02:50:05Z"
 		},
 		{
+			"checksumSHA1": "5wClYVpmw3z9bgBXNSCPWOiThWs=",
+			"path": "github.com/shadowsocks/shadowsocks-go/shadowsocks",
+			"revision": "6a03846ca9c02d8e94142b3c72b3182207a414b4",
+			"revisionTime": "2019-06-14T08:39:52Z"
+		},
+		{
 			"checksumSHA1": "mB5o9lbse489BCvZGbRkarc2Xp0=",
 			"path": "github.com/sirupsen/logrus",
 			"revision": "9b3cdde74fbe9443d704467498a7dcb61a79de9b",
 			"revisionTime": "2019-04-03T09:10:19Z"
+		},
+		{
+			"checksumSHA1": "q+XI9g44wd9mYvf3S5Wo8YZjAus=",
+			"path": "golang.org/x/crypto/blowfish",
+			"revision": "22d7a77e9e5f409e934ed268692e56707cd169e5",
+			"revisionTime": "2019-04-19T16:04:53Z"
+		},
+		{
+			"checksumSHA1": "zJybXQZcPAht+soLp/ozc9q5teE=",
+			"path": "golang.org/x/crypto/cast5",
+			"revision": "22d7a77e9e5f409e934ed268692e56707cd169e5",
+			"revisionTime": "2019-04-19T16:04:53Z"
+		},
+		{
+			"checksumSHA1": "yQNckVsxPX36aYbCk1ftg2w9ufw=",
+			"path": "golang.org/x/crypto/salsa20/salsa",
+			"revision": "22d7a77e9e5f409e934ed268692e56707cd169e5",
+			"revisionTime": "2019-04-19T16:04:53Z"
+		},
+		{
+			"checksumSHA1": "c2uqM0KcVJ2SFu/9Nt4w63GZ9xo=",
+			"path": "golang.org/x/sys/cpu",
+			"revision": "f49334f85ddcf0f08d7fb6dd7363e9e6d6b777eb",
+			"revisionTime": "2019-03-21T05:14:46Z"
 		},
 		{
 			"checksumSHA1": "6UWGUTDLw+kmzP6YY5K8QFWASDc=",

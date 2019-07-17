@@ -69,7 +69,7 @@ func main() {
 	} else if *Mysql {
 		log.Println("Mysql Proxy Listening port: 8081")
 	} else {
-		log.Println("Socket5 Proxy Listening port: 8081")
+		log.Println("Socket5 Cipher Proxy Listening port: 8081")
 	}
 
 	for {
@@ -86,7 +86,7 @@ func main() {
 		} else if *Mysql {
 			go protocol.HandleMysqlRequestTCP(client)
 		} else {
-			go protocol.HandleSocket5RequestTCP(client)
+			go protocol.HandleSocket5CipherRequestTCP(client)
 		}
 		// else if *Socket5Cipher {
 		// 	cipherDecorator := socksd.NewCipherConnDecorator(conf.Crypto, conf.Password)
