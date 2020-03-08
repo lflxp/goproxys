@@ -17,7 +17,12 @@ var (
 
 	Http = kingpin.Flag(
 		"http",
-		"http proxy代理，无加密",
+		"http proxy正向代理，无加密",
+	).Bool()
+
+	HttpReverseProxy = kingpin.Flag(
+		"httprp",
+		"http 反向代理,https tls加密",
 	).Bool()
 
 	Mysql = kingpin.Flag(
@@ -49,58 +54,63 @@ func init() {
 }
 
 func main() {
-	// cer, err := tls.LoadX509KeyPair("server.crt", "server.key")
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// config := &tls.Config{Certificates: []tls.Certificate{cer}}
-
-	l, err := net.Listen("tcp", ":8081")
-	// l, err := tls.Listen("tcp", ":8081", config)
-	if err != nil {
-		log.Panic(err)
-	}
-	log.Println("Started Proxy")
-
-	if *Http {
-		log.Println("Http Proxy Listening port: 8081")
-	} else if *Socket5 {
-		log.Println("Socket5 Proxy Listening port: 8081")
-	} else if *Mysql {
-		log.Println("Mysql Proxy Listening port: 8081")
+	if *HttpReverseProxy {
+		protocol.RunHttpProxy()
 	} else {
-		log.Println("Socket5 Cipher Proxy Listening port: 8081")
-	}
+		// cer, err := tls.LoadX509KeyPair("server.crt", "server.key")
+		// if err != nil {
+		// 	log.Fatal(err)
+		// }
+		// config := &tls.Config{Certificates: []tls.Certificate{cer}}
 
-	for {
-		client, err := l.Accept()
+		l, err := net.Listen("tcp", ":8081")
+		// l, err := tls.Listen("tcp", ":8081", config)
 		if err != nil {
 			log.Panic(err)
 		}
-		log.Println(client.RemoteAddr().String())
+		log.Println("Started Proxy")
 
 		if *Http {
-			go protocol.HandleHttpRequestTCP(client)
+			log.Println("Http Proxy Listening port: 8081")
 		} else if *Socket5 {
-			go protocol.HandleSocket5RequestTCP(client)
+			log.Println("Socket5 Proxy Listening port: 8081")
 		} else if *Mysql {
-			go protocol.HandleMysqlRequestTCP(client)
+			log.Println("Mysql Proxy Listening port: 8081")
 		} else {
-			go protocol.HandleSocket5CipherRequestTCP(client)
+			log.Println("Socket5 Cipher Proxy Listening port: 8081")
 		}
-		// else if *Socket5Cipher {
-		// 	cipherDecorator := socksd.NewCipherConnDecorator(conf.Crypto, conf.Password)
-		// 	listener = socksd.NewDecorateListener(listener, cipherDecorator)
-		// 	socks5Svr, err := socks.NewSocks5Server(forward)
-		// 	if err != nil {
-		// 		listener.Close()
-		// 		ErrLog.Println("socks.NewSocks5Server failed, err:", err)
-		// 		return
-		// 	}
-		// 	go func() {
-		// 		defer listener.Close()
-		// 		socks5Svr.Serve(listener)
-		// 	}()
-		// }
+
+		for {
+			client, err := l.Accept()
+			if err != nil {
+				log.Panic(err)
+			}
+			log.Println(client.RemoteAddr().String())
+
+			if *Http {
+				go protocol.HandleHttpRequestTCP(client)
+			} else if *Socket5 {
+				go protocol.HandleSocket5RequestTCP(client)
+			} else if *Mysql {
+				go protocol.HandleMysqlRequestTCP(client)
+			} else {
+				go protocol.HandleSocket5CipherRequestTCP(client)
+			}
+			// else if *Socket5Cipher {
+			// 	cipherDecorator := socksd.NewCipherConnDecorator(conf.Crypto, conf.Password)
+			// 	listener = socksd.NewDecorateListener(listener, cipherDecorator)
+			// 	socks5Svr, err := socks.NewSocks5Server(forward)
+			// 	if err != nil {
+			// 		listener.Close()
+			// 		ErrLog.Println("socks.NewSocks5Server failed, err:", err)
+			// 		return
+			// 	}
+			// 	go func() {
+			// 		defer listener.Close()
+			// 		socks5Svr.Serve(listener)
+			// 	}()
+			// }
+		}
 	}
+
 }
